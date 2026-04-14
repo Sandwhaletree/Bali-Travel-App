@@ -118,24 +118,25 @@ export default function Language() {
   );
 
   const cardStyle = {
-    background: 'rgba(132, 94, 194, 0.08)',
-    border: '1px solid rgba(196, 147, 255, 0.15)',
+    background: '#ffffff',
+    border: '1px solid rgba(132, 94, 194, 0.12)',
+    boxShadow: '0 2px 12px rgba(132,94,194,0.07)',
   };
 
   const inputStyle = {
-    background: 'rgba(75, 68, 83, 0.3)',
-    border: '1px solid rgba(196, 147, 255, 0.2)',
-    color: '#fefedf',
+    background: '#f8f7ff',
+    border: '1px solid rgba(132, 94, 194, 0.2)',
+    color: '#1a1528',
   };
 
   return (
     <div className="px-4 pb-4 bg-app min-h-screen">
       <div className="pt-12 pb-5">
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#fefedf' }}>💬 語言助理</h1>
+          <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#1a1528' }}>💬 語言助理</h1>
           <div className="gradient-stripe h-[2px] flex-1 rounded-full opacity-50" />
         </div>
-        <p className="text-sm mt-1" style={{ color: '#b0a8b9' }}>中文 ↔ 印尼語 / 英語</p>
+        <p className="text-sm mt-1" style={{ color: '#9b91a8' }}>中文 ↔ 印尼語 / 英語</p>
       </div>
 
       {/* === 即時翻譯 === */}
@@ -148,8 +149,8 @@ export default function Language() {
               <button key={btn.value} onClick={() => setTargetLang(btn.value)}
                 className="flex-1 py-2 rounded-xl text-xs font-medium transition-all"
                 style={targetLang === btn.value
-                  ? { background: btn.grad, color: '#fefedf', boxShadow: '0 3px 12px rgba(132,94,194,0.4)' }
-                  : { background: 'rgba(75,68,83,0.4)', color: '#b0a8b9', border: '1px solid rgba(176,168,185,0.15)' }
+                  ? { background: btn.grad, color: '#ffffff', boxShadow: '0 3px 12px rgba(132,94,194,0.3)' }
+                  : { background: '#f8f7ff', color: '#5a5065', border: '1px solid rgba(132,94,194,0.15)' }
                 }>
                 {btn.label}
               </button>
@@ -162,7 +163,7 @@ export default function Language() {
 
           <button onClick={handleTranslate} disabled={isTranslating || !inputText.trim()}
             className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all disabled:opacity-40"
-            style={{ background: 'linear-gradient(135deg, #ff6f91, #ff9671)', color: '#fefedf' }}>
+            style={{ background: 'linear-gradient(135deg, #ff6f91, #ff9671)', color: '#ffffff' }}>
             {isTranslating
               ? <><Loader2 size={16} className="animate-spin" /> 翻譯中...</>
               : <><Languages size={16} /> 立即翻譯</>}
@@ -208,11 +209,11 @@ export default function Language() {
                 : { background: 'linear-gradient(135deg, #845ec2, #d65db1)' }
               }>
               {isListening
-                ? <MicOff size={24} color="#fefedf" />
-                : <Mic size={24} color="#fefedf" />}
+                ? <MicOff size={24} color="#ffffff" />
+                : <Mic size={24} color="#ffffff" />}
             </motion.button>
             <div className="flex-1">
-              <p className="font-medium text-sm" style={{ color: '#fefedf' }}>
+              <p className="font-medium text-sm" style={{ color: '#1a1528' }}>
                 {isListening ? '🔴 正在錄音...' : '點擊麥克風開始錄音'}
               </p>
               <p className="text-xs mt-0.5" style={{ color: '#b0a8b9' }}>
@@ -223,20 +224,20 @@ export default function Language() {
 
           {transcript && (
             <div className="rounded-xl p-3"
-              style={{ background: 'rgba(75,68,83,0.3)', border: '1px solid rgba(176,168,185,0.15)' }}>
-              <p className="text-xs mb-1" style={{ color: '#b0a8b9' }}>辨識結果：</p>
-              <p className="text-sm" style={{ color: '#fefedf' }}>{transcript}</p>
+              style={{ background: '#f8f7ff', border: '1px solid rgba(132,94,194,0.15)' }}>
+              <p className="text-xs mb-1" style={{ color: '#9b91a8' }}>辨識結果：</p>
+              <p className="text-sm" style={{ color: '#1a1528' }}>{transcript}</p>
               <button onClick={handleSpeechTranslate}
                 className="mt-2 w-full py-2 rounded-lg text-xs font-medium transition-all"
-                style={{ background: 'rgba(132,94,194,0.2)', border: '1px solid rgba(196,147,255,0.3)', color: '#c493ff' }}>
+                style={{ background: 'rgba(132,94,194,0.08)', border: '1px solid rgba(132,94,194,0.25)', color: '#845ec2' }}>
                 翻譯成中文
               </button>
             </div>
           )}
           {speechTranslation && (
             <div className="rounded-xl p-3"
-              style={{ background: 'rgba(196,147,255,0.1)', border: '1px solid rgba(196,147,255,0.25)' }}>
-              <p className="text-sm" style={{ color: '#fefedf' }}>{speechTranslation}</p>
+              style={{ background: 'rgba(132,94,194,0.07)', border: '1px solid rgba(132,94,194,0.2)' }}>
+              <p className="text-sm" style={{ color: '#1a1528' }}>{speechTranslation}</p>
             </div>
           )}
         </div>
@@ -258,9 +259,9 @@ export default function Language() {
                 onClick={() => fileInputRef.current?.click()}
                 className="py-4 rounded-xl flex flex-col items-center gap-2 text-sm font-medium transition-all hover:scale-[1.02]"
                 style={{
-                  background: 'rgba(132,94,194,0.1)',
-                  border: '1px solid rgba(196,147,255,0.2)',
-                  color: '#d5cabd',
+                  background: '#f8f7ff',
+                  border: '1px solid rgba(132,94,194,0.15)',
+                  color: '#5a5065',
                 }}>
                 <btn.icon size={22} style={{ color: '#c493ff' }} />
                 {btn.label}
@@ -278,9 +279,9 @@ export default function Language() {
           {ocrResult && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-2">
               <div className="rounded-xl p-3"
-                style={{ background: 'rgba(75,68,83,0.3)', border: '1px solid rgba(176,168,185,0.1)' }}>
-                <p className="text-xs mb-1" style={{ color: '#b0a8b9' }}>📷 原始文字</p>
-                <p className="text-sm" style={{ color: '#d5cabd' }}>{ocrResult.originalText}</p>
+                style={{ background: '#f8f7ff', border: '1px solid rgba(132,94,194,0.15)' }}>
+                <p className="text-xs mb-1" style={{ color: '#9b91a8' }}>📷 原始文字</p>
+                <p className="text-sm" style={{ color: '#1a1528' }}>{ocrResult.originalText}</p>
               </div>
               <div className="rounded-xl p-3"
                 style={{ background: 'rgba(255,111,145,0.1)', border: '1px solid rgba(255,111,145,0.3)' }}>
@@ -289,9 +290,9 @@ export default function Language() {
               </div>
               {ocrResult.details && (
                 <div className="rounded-xl p-3"
-                  style={{ background: 'rgba(132,94,194,0.08)', border: '1px solid rgba(196,147,255,0.15)' }}>
-                  <p className="text-xs mb-1" style={{ color: '#b0a8b9' }}>💡 說明</p>
-                  <p className="text-sm" style={{ color: '#d5cabd' }}>{ocrResult.details}</p>
+                  style={{ background: 'rgba(132,94,194,0.06)', border: '1px solid rgba(132,94,194,0.15)' }}>
+                  <p className="text-xs mb-1" style={{ color: '#9b91a8' }}>💡 說明</p>
+                  <p className="text-sm" style={{ color: '#5a5065' }}>{ocrResult.details}</p>
                 </div>
               )}
             </motion.div>
@@ -314,10 +315,10 @@ export default function Language() {
             const isActive = activeScene === scenario.scene;
             return (
               <div key={scenario.scene} className="rounded-2xl overflow-hidden"
-                style={{ border: `1px solid ${sg.border}`, background: isActive ? sg.active : 'rgba(75,68,83,0.2)' }}>
+                style={{ border: `1px solid ${sg.border}`, background: isActive ? sg.active : '#ffffff' }}>
                 <button className="w-full px-4 py-3 flex items-center justify-between"
                   onClick={() => setActiveScene(isActive ? null : scenario.scene)}>
-                  <span className="font-medium font-[Outfit]" style={{ color: '#fefedf' }}>{scenario.scene}</span>
+                  <span className="font-medium font-[Outfit]" style={{ color: '#1a1528' }}>{scenario.scene}</span>
                   <ChevronDown size={16} style={{ color: sg.text, transform: isActive ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s' }} />
                 </button>
 
@@ -327,13 +328,13 @@ export default function Language() {
                       <div className="px-4 pb-4 space-y-2 border-t" style={{ borderColor: sg.border }}>
                         {scenario.phrases.map(phrase => (
                           <div key={phrase.zh} className="rounded-xl p-3"
-                            style={{ background: 'rgba(18,13,30,0.5)', border: `1px solid ${sg.border}` }}>
-                            <p className="font-medium text-sm mb-1" style={{ color: '#fefedf' }}>{phrase.zh}</p>
+                            style={{ background: '#f8f7ff', border: `1px solid ${sg.border}` }}>
+                            <p className="font-medium text-sm mb-1" style={{ color: '#1a1528' }}>{phrase.zh}</p>
                             <div className="flex items-center justify-between gap-2">
                               <div>
                                 <p className="text-sm" style={{ color: sg.text }}>{phrase.id}</p>
-                                <p className="text-xs" style={{ color: '#b0a8b9' }}>{phrase.en}</p>
-                                <p className="text-xs mt-0.5" style={{ color: '#ffc75f' }}>🔊 {phrase.pron}</p>
+                                <p className="text-xs" style={{ color: '#5a5065' }}>{phrase.en}</p>
+                                <p className="text-xs mt-0.5" style={{ color: '#a07000' }}>🔊 {phrase.pron}</p>
                               </div>
                               <button onClick={() => speak(phrase.id, 'id-ID')}
                                 className="p-2 rounded-lg transition-all hover:scale-110 flex-shrink-0"

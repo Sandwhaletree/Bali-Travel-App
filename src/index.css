@@ -5,7 +5,7 @@
   --font-outfit: 'Outfit', sans-serif;
   --font-inter: 'Inter', sans-serif;
 
-  /* === Generic Gradient Palette === */
+  /* === Generic Gradient Palette（強調色保留） === */
   --color-grad-1: #845ec2;
   --color-grad-2: #d65db1;
   --color-grad-3: #ff6f91;
@@ -20,16 +20,15 @@
   --color-btn-danger: #c34a36;
   --color-btn-accent: #ff8066;
 
-  /* === Highlight Palette (Emphasis) === */
-  --color-hi-purple: #845ec2;
-  --color-hi-glow: #c493ff;
-  --color-hi-cream: #fefedf;
-  --color-hi-sand: #d5cabd;
+  /* === 淺色主題 Foundation === */
+  --color-app-bg: #f8f7ff;
+  --color-app-surface: rgba(255, 255, 255, 0.9);
+  --color-app-border: rgba(132, 94, 194, 0.12);
 
-  /* === App Foundation === */
-  --color-app-bg: #120d1e;
-  --color-app-surface: rgba(132, 94, 194, 0.08);
-  --color-app-border: rgba(196, 147, 255, 0.15);
+  /* === 文字色 === */
+  --color-text-primary: #1a1528;
+  --color-text-secondary: #5a5065;
+  --color-text-muted: #9b91a8;
 }
 
 * {
@@ -42,7 +41,7 @@ html, body, #root {
   height: 100%;
   font-family: 'Inter', sans-serif;
   background: var(--color-app-bg);
-  color: #fefedf;
+  color: var(--color-text-primary);
   overflow-x: hidden;
 }
 
@@ -51,18 +50,18 @@ h1, h2, h3, h4, h5 {
 }
 
 /* ============================================================
-   全局背景：Generic Gradient 炫彩深色主題
+   全局背景：淺色系，帶淡紫暈染
    ============================================================ */
 .bg-app {
   background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(132, 94, 194, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(214, 93, 177, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(255, 111, 145, 0.12) 0%, transparent 60%),
-    #120d1e;
+    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(132, 94, 194, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 85% 5%, rgba(214, 93, 177, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 50% 100%, rgba(255, 111, 145, 0.04) 0%, transparent 60%),
+    #f8f7ff;
 }
 
 /* ============================================================
-   漸層條帶：Generic Gradient 完整六色
+   漸層條帶：Generic Gradient 完整六色（作為強調裝飾）
    ============================================================ */
 .gradient-stripe {
   background: linear-gradient(
@@ -88,50 +87,48 @@ h1, h2, h3, h4, h5 {
   );
 }
 
-/* 按鈕漸層（Classy → Gradient 過渡） */
+/* 按鈕漸層（保留原色彩，文字改深色/白色） */
 .btn-primary {
   background: linear-gradient(135deg, #845ec2 0%, #d65db1 100%);
-  color: #fefedf;
-  border: 1px solid rgba(196, 147, 255, 0.3);
+  color: #ffffff;
+  border: none;
 }
 
 .btn-action {
   background: linear-gradient(135deg, #c34a36 0%, #ff8066 100%);
-  color: #fefedf;
-  border: 1px solid rgba(255, 128, 102, 0.3);
+  color: #ffffff;
+  border: none;
 }
 
 .btn-secondary {
-  background: rgba(75, 68, 83, 0.6);
-  color: #b0a8b9;
-  border: 1px solid rgba(176, 168, 185, 0.2);
+  background: #ffffff;
+  color: #5a5065;
+  border: 1px solid rgba(132, 94, 194, 0.2);
 }
 
 /* ============================================================
-   玻璃擬態：Highlight 紫光風格
+   卡片：白底陰影風格（取代玻璃擬態）
    ============================================================ */
 .glass {
-  background: rgba(132, 94, 194, 0.08);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(196, 147, 255, 0.15);
+  border: 1px solid rgba(132, 94, 194, 0.12);
+  box-shadow: 0 2px 16px rgba(132, 94, 194, 0.08);
 }
 
 .glass-strong {
-  background: rgba(132, 94, 194, 0.15);
+  background: #ffffff;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(196, 147, 255, 0.25);
+  border: 1px solid rgba(132, 94, 194, 0.18);
+  box-shadow: 0 4px 24px rgba(132, 94, 194, 0.12);
 }
 
 .glass-card {
-  background: linear-gradient(135deg,
-    rgba(132, 94, 194, 0.12) 0%,
-    rgba(75, 68, 83, 0.15) 100%
-  );
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(196, 147, 255, 0.18);
+  background: #ffffff;
+  border: 1px solid rgba(132, 94, 194, 0.12);
+  box-shadow: 0 2px 12px rgba(132, 94, 194, 0.07);
 }
 
 /* ============================================================
@@ -148,8 +145,8 @@ h1, h2, h3, h4, h5 {
    動畫
    ============================================================ */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 147, 255, 0.5); }
-  50%       { box-shadow: 0 0 0 14px rgba(196, 147, 255, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(132, 94, 194, 0.4); }
+  50%       { box-shadow: 0 0 0 14px rgba(132, 94, 194, 0); }
 }
 
 @keyframes shimmer-gradient {
@@ -175,9 +172,9 @@ h1, h2, h3, h4, h5 {
 .pulse-glow   { animation: pulse-glow 2s infinite; }
 .floating     { animation: float 3s ease-in-out infinite; }
 
-/* 炫彩動態漸層文字 */
+/* 炫彩動態漸層文字（保留作標題強調） */
 .text-gradient {
-  background: linear-gradient(90deg, #c493ff, #ff6f91, #ffc75f, #c493ff);
+  background: linear-gradient(90deg, #845ec2, #d65db1, #ff6f91, #845ec2);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -187,17 +184,17 @@ h1, h2, h3, h4, h5 {
 
 /* 靜態漸層文字 */
 .text-gradient-static {
-  background: linear-gradient(90deg, #c493ff 0%, #ff6f91 60%, #ffc75f 100%);
+  background: linear-gradient(90deg, #845ec2 0%, #d65db1 60%, #ff6f91 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ============================================================
-   強調標籤
+   強調標籤（淺色背景版）
    ============================================================ */
-.badge-purple { background: rgba(132, 94, 194, 0.25); color: #c493ff; border: 1px solid rgba(196, 147, 255, 0.3); }
-.badge-pink   { background: rgba(214, 93, 177, 0.2);  color: #ff8ec0; border: 1px solid rgba(214, 93, 177, 0.3); }
-.badge-coral  { background: rgba(195, 74, 54, 0.2);   color: #ff8066; border: 1px solid rgba(255, 128, 102, 0.3); }
-.badge-gold   { background: rgba(255, 199, 95, 0.15); color: #ffc75f; border: 1px solid rgba(255, 199, 95, 0.3); }
-.badge-cream  { background: rgba(254, 254, 223, 0.1); color: #fefedf; border: 1px solid rgba(254, 254, 223, 0.2); }
+.badge-purple { background: rgba(132, 94, 194, 0.1); color: #6b47b0; border: 1px solid rgba(132, 94, 194, 0.25); }
+.badge-pink   { background: rgba(214, 93, 177, 0.08); color: #b84596; border: 1px solid rgba(214, 93, 177, 0.25); }
+.badge-coral  { background: rgba(195, 74, 54, 0.08);  color: #b83a25; border: 1px solid rgba(195, 74, 54, 0.25); }
+.badge-gold   { background: rgba(255, 199, 95, 0.15); color: #a07000; border: 1px solid rgba(255, 199, 95, 0.4); }
+.badge-cream  { background: rgba(90, 80, 101, 0.08);  color: #5a5065; border: 1px solid rgba(90, 80, 101, 0.15); }

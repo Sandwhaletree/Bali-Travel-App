@@ -66,7 +66,7 @@ export default function AgentButton() {
     <>
       {/* 浮動按鈕：Generic Gradient 六色 */}
       <motion.button
-        className="fixed bottom-20 right-4 z-50 w-14 h-14 rounded-full
+        className="absolute bottom-4 right-4 z-50 w-14 h-14 rounded-full
                    flex items-center justify-center pulse-glow"
         style={{
           background: 'linear-gradient(135deg, #845ec2 0%, #d65db1 40%, #ff6f91 70%, #ff9671 100%)',
@@ -88,8 +88,8 @@ export default function AgentButton() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-            className="fixed inset-0 z-[100] flex flex-col"
-            style={{ background: 'rgba(18, 13, 30, 0.97)', backdropFilter: 'blur(24px)' }}
+            className="absolute inset-x-0 bottom-0 top-auto z-[100] flex flex-col rounded-t-3xl overflow-hidden"
+            style={{ height: '90%', background: 'rgba(18, 13, 30, 0.97)', backdropFilter: 'blur(24px)' }}
           >
             {/* Generic Gradient 頂部裝飾線 */}
             <div className="gradient-stripe h-[3px] w-full flex-shrink-0" />

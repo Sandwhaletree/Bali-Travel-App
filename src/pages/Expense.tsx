@@ -79,15 +79,16 @@ export default function Expense() {
   }))}`;
 
   const inputStyle = {
-    background: 'rgba(75, 68, 83, 0.35)',
-    border: '1px solid rgba(196, 147, 255, 0.2)',
-    color: '#fefedf',
+    background: '#f8f7ff',
+    border: '1px solid rgba(132, 147, 255, 0.2)',
+    color: '#1a1528',
     outline: 'none',
   };
 
   const cardStyle = {
-    background: 'rgba(132, 94, 194, 0.08)',
-    border: '1px solid rgba(196, 147, 255, 0.15)',
+    background: '#ffffff',
+    border: '1px solid rgba(132, 94, 194, 0.12)',
+    boxShadow: '0 2px 12px rgba(132,94,194,0.07)',
   };
 
   return (
@@ -96,7 +97,7 @@ export default function Expense() {
       <div className="pt-12 pb-4 flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#fefedf' }}>💰 旅遊分帳</h1>
+            <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#1a1528' }}>💰 旅遊分帳</h1>
             <div className="gradient-stripe h-[2px] w-16 rounded-full opacity-60" />
           </div>
           <p className="text-sm mt-1" style={{ color: '#b0a8b9' }}>Sandy & Partner</p>
@@ -153,7 +154,7 @@ export default function Expense() {
               <div className="flex items-center gap-2 rounded-xl p-3"
                 style={{ background: 'rgba(195,74,54,0.15)', border: '1px solid rgba(255,128,102,0.3)' }}>
                 <ArrowRightLeft size={14} style={{ color: '#ff8066' }} />
-                <p className="text-sm" style={{ color: '#fefedf' }}>
+                <p className="text-sm" style={{ color: '#1a1528' }}>
                   {debtor} 需轉
                   <span className="font-bold mx-1" style={{ color: '#ff8066' }}>Rp {amount.toLocaleString()}</span>
                   給 {creditor}
@@ -170,7 +171,7 @@ export default function Expense() {
         className="w-full mb-4 py-3 rounded-2xl font-semibold font-[Outfit] flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99]"
         style={{
           background: 'linear-gradient(135deg, #845ec2 0%, #d65db1 50%, #ff6f91 100%)',
-          color: '#fefedf',
+          color: '#ffffff',
           boxShadow: '0 4px 20px rgba(132,94,194,0.4)',
         }}>
         <Plus size={20} /> 新增消費
@@ -195,7 +196,7 @@ export default function Expense() {
                   style={inputStyle} />
                 <select value={form.currency} onChange={e => setForm(p => ({ ...p, currency: e.target.value as Expense['currency'] }))}
                   className="rounded-xl px-3 py-3 text-sm"
-                  style={{ ...inputStyle, background: 'rgba(75,68,83,0.5)' }}>
+                  style={{ ...inputStyle, background: '#ffffff' }}>
                   {CURRENCY_OPTIONS.map(c => <option key={c.value} value={c.value} className="bg-gray-900">{c.label}</option>)}
                 </select>
               </div>
@@ -266,7 +267,7 @@ export default function Expense() {
 
               <button onClick={handleAdd}
                 className="w-full py-3 rounded-xl font-medium transition-all"
-                style={{ background: 'linear-gradient(135deg, #c34a36, #ff8066)', color: '#fefedf' }}>
+                style={{ background: 'linear-gradient(135deg, #c34a36, #ff8066)', color: '#ffffff' }}>
                 確認新增
               </button>
             </div>
@@ -282,7 +283,7 @@ export default function Expense() {
       {expenses.length === 0 && (
         <div className="text-center py-8 rounded-2xl" style={cardStyle}>
           <p className="text-4xl mb-2">🧾</p>
-          <p className="text-sm" style={{ color: '#4b4453' }}>尚無消費記錄</p>
+          <p className="text-sm" style={{ color: '#9b91a8' }}>尚無消費記錄</p>
         </div>
       )}
       <div className="space-y-2">
@@ -293,14 +294,14 @@ export default function Expense() {
             <motion.div key={exp.id}
               initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
               className="rounded-xl p-3 flex items-center gap-3 relative overflow-hidden"
-              style={{ background: 'rgba(75,68,83,0.2)', border: '1px solid rgba(196,147,255,0.1)' }}>
+              style={{ background: '#ffffff', border: '1px solid rgba(132,94,194,0.12)', boxShadow: '0 1px 6px rgba(132,94,194,0.06)' }}>
               {/* 左側彩色細條 */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl"
                 style={{ background: color }} />
               <span className="text-xl ml-1">{cat?.emoji}</span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium" style={{ color: '#fefedf' }}>{exp.title}</p>
-                <p className="text-xs" style={{ color: '#b0a8b9' }}>
+                <p className="text-sm font-medium" style={{ color: '#1a1528' }}>{exp.title}</p>
+                <p className="text-xs" style={{ color: '#9b91a8' }}>
                   {exp.paidBy} 付 · {exp.splitType === 'equal' ? 'AA均分' : '自費'} · {new Date(exp.date).toLocaleDateString('zh-TW')}
                 </p>
               </div>
@@ -325,12 +326,12 @@ export default function Expense() {
             style={{ background: 'rgba(18,13,30,0.85)', backdropFilter: 'blur(10px)' }}
             onClick={() => setShowQR(false)}>
             <motion.div initial={{ scale: 0.85, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.85, y: 20 }}
-              className="rounded-3xl p-6 w-full max-w-sm" style={cardStyle}
+              className="rounded-3xl p-6 w-full max-w-sm" style={{ background: '#ffffff', border: '1px solid rgba(132,94,194,0.15)', boxShadow: '0 8px 32px rgba(132,94,194,0.15)' }}
               onClick={e => e.stopPropagation()}>
               {/* 漸層頂線 */}
               <div className="gradient-stripe h-[3px] w-full rounded-full mb-5" />
               <div className="flex items-center justify-between mb-5">
-                <h3 className="font-bold font-[Outfit] text-lg" style={{ color: '#fefedf' }}>📱 QR 碼分享</h3>
+                <h3 className="font-bold font-[Outfit] text-lg" style={{ color: '#1a1528' }}>📱 QR 碼分享</h3>
                 <button onClick={() => setShowQR(false)}
                   className="p-2 rounded-lg transition-all hover:scale-110" style={{ color: '#b0a8b9' }}>
                   <X size={18} />

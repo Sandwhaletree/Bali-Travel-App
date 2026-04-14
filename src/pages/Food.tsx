@@ -67,10 +67,10 @@ const CATEGORIES = [
 
 // NOTE: 每個分類用不同漸層 - 對應 Generic Gradient 六色
 const categoryGrad: Record<string, { bg: string; border: string; text: string }> = {
-  local:   { bg: 'rgba(132,94,194,0.15)', border: 'rgba(132,94,194,0.35)', text: '#c493ff' },
-  seafood: { bg: 'rgba(214,93,177,0.15)', border: 'rgba(214,93,177,0.35)', text: '#ff8ec0' },
-  cafe:    { bg: 'rgba(255,150,113,0.15)', border: 'rgba(255,150,113,0.35)', text: '#ffc75f' },
-  dessert: { bg: 'rgba(255,199,95,0.12)', border: 'rgba(255,199,95,0.3)', text: '#ffc75f' },
+  local:   { bg: 'rgba(132,94,194,0.1)', border: 'rgba(132,94,194,0.3)', text: '#6b47b0' },
+  seafood: { bg: 'rgba(214,93,177,0.1)', border: 'rgba(214,93,177,0.3)', text: '#b84596' },
+  cafe:    { bg: 'rgba(255,150,113,0.1)', border: 'rgba(255,150,113,0.3)', text: '#c45c00' },
+  dessert: { bg: 'rgba(255,199,95,0.12)', border: 'rgba(255,199,95,0.4)', text: '#a07000' },
 };
 
 const priceMap = { '$': '平價', '$$': '中等', '$$$': '高級' };
@@ -102,10 +102,10 @@ export default function Food() {
       {/* 標題 */}
       <div className="pt-12 pb-4">
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#fefedf' }}>🍜 美食探索</h1>
+          <h1 className="text-2xl font-bold font-[Outfit]" style={{ color: '#1a1528' }}>🍜 美食探索</h1>
           <div className="gradient-stripe h-[2px] flex-1 rounded-full opacity-50" />
         </div>
-        <p className="text-sm mt-1" style={{ color: '#b0a8b9' }}>巴厘島必吃美食清單</p>
+        <p className="text-sm mt-1" style={{ color: '#9b91a8' }}>巴厘島必吃美食清單</p>
       </div>
 
       {/* 搜尋列 */}
@@ -117,9 +117,9 @@ export default function Food() {
           placeholder="搜尋美食..."
           className="w-full rounded-2xl pl-10 pr-4 py-3 text-sm placeholder-[#b0a8b9] outline-none"
           style={{
-            background: 'rgba(132, 94, 194, 0.1)',
-            border: '1px solid rgba(196, 147, 255, 0.2)',
-            color: '#fefedf',
+            background: '#ffffff',
+            border: '1px solid rgba(132, 94, 194, 0.18)',
+            color: '#1a1528',
           }}
         />
       </div>
@@ -135,12 +135,12 @@ export default function Food() {
               className="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all"
               style={isActive ? {
                 background: filterGrads[i],
-                color: '#fefedf',
-                boxShadow: '0 4px 15px rgba(132,94,194,0.4)',
+                color: '#ffffff',
+                boxShadow: '0 4px 15px rgba(132,94,194,0.35)',
               } : {
-                background: 'rgba(75,68,83,0.35)',
-                color: '#b0a8b9',
-                border: '1px solid rgba(176,168,185,0.15)',
+                background: '#ffffff',
+                color: '#5a5065',
+                border: '1px solid rgba(132,94,194,0.15)',
               }}
             >
               <span>{cat.emoji}</span> {cat.label}
@@ -152,9 +152,9 @@ export default function Food() {
       {/* 已收藏提示 */}
       {savedFoods.length > 0 && (
         <div className="rounded-2xl p-3 mb-4 flex items-center gap-2"
-          style={{ background: 'rgba(132,94,194,0.1)', border: '1px solid rgba(196,147,255,0.2)' }}>
-          <BookmarkCheck size={16} style={{ color: '#c493ff' }} />
-          <p className="text-xs" style={{ color: '#d5cabd' }}>已收藏 <span style={{ color: '#c493ff' }}>{savedFoods.length}</span> 道美食</p>
+          style={{ background: 'rgba(132,94,194,0.07)', border: '1px solid rgba(132,94,194,0.18)' }}>
+          <BookmarkCheck size={16} style={{ color: '#845ec2' }} />
+          <p className="text-xs" style={{ color: '#5a5065' }}>已收藏 <span style={{ color: '#845ec2' }}>{savedFoods.length}</span> 道美食</p>
         </div>
       )}
 
@@ -168,7 +168,7 @@ export default function Food() {
               key={food.id}
               initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i }}
               className="rounded-2xl overflow-hidden relative"
-              style={{ background: cg.bg, border: `1px solid ${cg.border}` }}
+              style={{ background: '#ffffff', border: '1px solid rgba(132,94,194,0.12)', boxShadow: '0 2px 12px rgba(132,94,194,0.07)' }}
             >
               {/* 左側彩色邊條 */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] gradient-stripe-45 rounded-l-2xl" />
@@ -177,31 +177,31 @@ export default function Food() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold font-[Outfit] text-base" style={{ color: '#fefedf' }}>{food.name}</h3>
+                      <h3 className="font-semibold font-[Outfit] text-base" style={{ color: '#1a1528' }}>{food.name}</h3>
                       <span className="text-xs px-2 py-0.5 rounded-full"
                         style={{ background: cg.bg, border: `1px solid ${cg.border}`, color: cg.text }}>
                         {CATEGORIES.find(c => c.id === food.category)?.emoji}
                       </span>
                     </div>
-                    <p className="text-sm" style={{ color: '#d5cabd' }}>{food.mustTry}</p>
+                    <p className="text-sm" style={{ color: '#5a5065' }}>{food.mustTry}</p>
 
                     <div className="flex items-center gap-3 mt-2 flex-wrap">
                       {food.rating && (
                         <div className="flex items-center gap-1">
                           <Star size={12} style={{ color: '#ffc75f', fill: '#ffc75f' }} />
-                          <span className="text-xs" style={{ color: '#d5cabd' }}>{food.rating}</span>
+                          <span className="text-xs" style={{ color: '#5a5065' }}>{food.rating}</span>
                         </div>
                       )}
                       {food.priceRange && (
                         <div className="flex items-center gap-1">
-                          <DollarSign size={12} style={{ color: '#c493ff' }} />
-                          <span className="text-xs" style={{ color: '#d5cabd' }}>{food.priceRange} {priceMap[food.priceRange]}</span>
+                          <DollarSign size={12} style={{ color: '#845ec2' }} />
+                          <span className="text-xs" style={{ color: '#5a5065' }}>{food.priceRange} {priceMap[food.priceRange]}</span>
                         </div>
                       )}
                       {food.address && (
                         <div className="flex items-center gap-1">
-                          <MapPin size={12} style={{ color: '#b0a8b9' }} />
-                          <span className="text-xs" style={{ color: '#b0a8b9' }}>{food.address}</span>
+                          <MapPin size={12} style={{ color: '#9b91a8' }} />
+                          <span className="text-xs" style={{ color: '#9b91a8' }}>{food.address}</span>
                         </div>
                       )}
                     </div>
@@ -214,9 +214,9 @@ export default function Food() {
                     <a href={food.googleMapsUrl} target="_blank" rel="noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-medium transition-all hover:scale-[1.02]"
                       style={{
-                        background: 'rgba(132,94,194,0.2)',
-                        border: '1px solid rgba(196,147,255,0.3)',
-                        color: '#c493ff',
+                        background: 'rgba(132,94,194,0.08)',
+                        border: '1px solid rgba(132,94,194,0.22)',
+                        color: '#845ec2',
                       }}>
                       <Navigation size={14} /> Maps 導航
                     </a>
@@ -225,13 +225,13 @@ export default function Food() {
                     onClick={() => saved ? removeFoodPlace(food.id) : addFoodPlace(food)}
                     className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-medium transition-all hover:scale-[1.02]"
                     style={saved ? {
-                      background: 'rgba(196,147,255,0.2)',
-                      border: '1px solid rgba(196,147,255,0.4)',
-                      color: '#c493ff',
+                      background: 'rgba(132,94,194,0.1)',
+                      border: '1px solid rgba(132,94,194,0.3)',
+                      color: '#845ec2',
                     } : {
-                      background: 'rgba(75,68,83,0.4)',
-                      border: '1px solid rgba(176,168,185,0.15)',
-                      color: '#b0a8b9',
+                      background: '#f8f7ff',
+                      border: '1px solid rgba(132,94,194,0.15)',
+                      color: '#9b91a8',
                     }}
                   >
                     {saved

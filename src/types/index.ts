@@ -8,16 +8,17 @@ export interface LatLng {
 export interface Attraction {
   id: string;
   name: string;
-  nameId?: string;       // 印尼語名稱
+  nameId?: string;
   description: string;
-  category: 'temple' | 'beach' | 'culture' | 'nature' | 'shopping' | 'other';
+  category: 'temple' | 'beach' | 'culture' | 'nature' | 'shopping' | 'other' | 'hotel' | 'food' | 'activity' | 'transport';
   location: LatLng;
   address?: string;
   rating?: number;
   imageUrl?: string;
   googleMapsUrl?: string;
-  visitTime?: string;    // e.g. "09:00"
-  duration?: number;     // 分鐘
+  visitTime?: string;
+  duration?: number;
+  note?: string;
 }
 
 export interface FoodPlace {
