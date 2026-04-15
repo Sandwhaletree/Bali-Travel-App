@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Trash2, Navigation, Download, Edit2, X,
-  Clock, MapPin, AlertTriangle, Grid, List,
+  Clock, MapPin, AlertTriangle,
 } from 'lucide-react';
 import { useItineraryStore } from '../store/itineraryStore';
 import { SANDY_BALI_ITINERARY } from '../data/baliItinerary';
@@ -315,7 +315,6 @@ export default function Explore() {
                 ? day.attractions
                 : day.attractions.filter(a => a.category === catFilter);
               if (items.length === 0) return null;
-              const { mmdd, wd } = fmtDay(day.date);
               return (
                 <motion.div key={day.date} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * idx }}
